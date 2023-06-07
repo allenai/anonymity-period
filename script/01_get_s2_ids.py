@@ -1,3 +1,7 @@
+"""
+Get S2 ID's of all papers.
+"""
+
 import pandas as pd
 import requests
 from tqdm import tqdm

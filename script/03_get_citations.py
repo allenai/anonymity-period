@@ -1,3 +1,7 @@
+"""
+Get info on all the citing papers.
+"""
+
 import pandas as pd
 import requests
 import os

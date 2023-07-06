@@ -1,5 +1,7 @@
 """
-Count the number of citations within a year of publication, for each data in ICLR.
+Count the number of citations within a given time window of publication.
+
+Time windows include: 1/2 year, 1 year, 2 years, 3 years, 5 years.
 """
 
 

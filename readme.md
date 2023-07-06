@@ -1,6 +1,6 @@
 # Estimating the Causal Effect of Early ArXiving on Paper Acceptance
 
-<img align="right" src="img/graph.png" width=300px>
+<img align="right" src="img/graph.png" width=400px>
 
 This repository contains code and data for the paper [Estimating the Causal Effect of Early ArXiving on Paper Acceptance](https://arxiv.org/abs/2306.13891) by Yanai Elazar, Jiayao Zhang, David Wadden, Bo Zhang, Noah A. Smith.
 

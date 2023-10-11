@@ -1,3 +1,7 @@
+# data_utils.py
+# Jiayao Zhang
+# Adopted from [ICLR database repo](https://cogcomp.github.io/iclr_database/)
+
 import numpy as np
 import pandas as pd
 import tqdm

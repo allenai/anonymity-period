@@ -1,3 +1,9 @@
+# functions_customized_dist_left.R
+#
+# statistical matching with fine-balance
+# adopted from code repo of https://arxiv.org/abs/2211.15849
+# original author by Chang Chen
+
 ## Functions
 library(tableone)
 library(xtable)

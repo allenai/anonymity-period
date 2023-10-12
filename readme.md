@@ -6,6 +6,10 @@ This repository contains code and data for the paper [Estimating the Causal Effe
 
 ## Setup
 
+### `Python` Environment
+
+We use `python` for the majority of our anlaysis, which can be set up as
+follows.
 ```bash
 # Set up conda env.
 conda create --name anon python=3.10
@@ -17,8 +21,14 @@ cd anonymity-period
 pip install -r requirements.txt
 ```
 
+### `R` Environment
+We use `R` for statistical matching, which is used in [`03_s2_data_analysis.ipynb`](./notebooks/03_s2_data_analysis.ipynb).
+This is optional, since the matched data is provided as part of the processed
+data documented in the following sections. To set up `R` kernel in `Jupyter`,
+one may refer to the [`IRKernel` Package](https://github.com/IRkernel/IRkernel).
 
-## Data Acquisition and preprocessing
+
+## Data Acquisition and Preprocessing
 
 ### ICLR Data
 ICLR data can be obtained from [ICLR Database](https://cogcomp.github.io/iclr_database/).
@@ -40,7 +50,9 @@ to get the correpsonding S2 data for the ICLR submissions.
 
 ## Notebooks
 
-This study is conducted in the notebook in the order below:
+This study is conducted in the notebook in the order below. The notebooks assumes the root directory as the
+current working directory. It may be convenient to symlink the notebooks via `ln -s ./notebook/*.ipynb ./`
+and run them from the root directory for ease of module and data imports.
 
 
 1. Prepare ICLR Data ([`01_iclr_data.ipynb`](./notebooks/01_iclr_data.ipynb)): load data from the ICLR database, generate dataframes `baby_iclr` and `design_mat`
@@ -50,6 +62,8 @@ for subsquent analysis.
 4. Primary and NOC Analysis ([`04_effect_analysis.ipynb`](./notebooks/04_effect_analysis.ipynb)): uses `design_mat` and `c_n` to perform primary and NOC anlaysis.
 5. Ploting results ([`05_plots.ipynb`](./notebooks/05_plots.ipynb)): plots the results in the primary and NOC analysis.
 
+*Note*: for reproducing all tables and figures, one can use processed data and only
+   notebooks 04 and 05 are needed.
 
 # Reference
 ```bib

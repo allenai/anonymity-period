@@ -8,6 +8,7 @@ import os
 from tqdm import tqdm
 import json
 
+# Requires an S2 API key.
 API_KEY = os.environ["S2_API_KEY"]
 
 

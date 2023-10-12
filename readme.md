@@ -25,7 +25,7 @@ conda develop .
 ```
 
 ### `R` Environment
-We use `R` for statistical matching, which is used in [`03_s2_data_analysis.ipynb`](./notebooks/03_s2_data_analysis.ipynb).
+We use `R` for statistical matching, which is used in [`02_matching.ipynb`](./notebooks/02_matching.ipynb).
 This is optional, since the matched data is provided as part of the processed
 data documented in the following sections. To set up `R` kernel in `Jupyter`,
 one may refer to the [`IRKernel` Package](https://github.com/IRkernel/IRkernel).

@@ -14,11 +14,14 @@ follows.
 # Set up conda env.
 conda create --name anon python=3.10
 conda activate anon
+conda install conda-build
+conda install r-essentials r-base
 
 # Clone this repo and install.
 git clone https://github.com/allenai/anonymity-period.git
 cd anonymity-period
 pip install -r requirements.txt
+conda develop .
 ```
 
 ### `R` Environment
@@ -34,7 +37,11 @@ one may refer to the [`IRKernel` Package](https://github.com/IRkernel/IRkernel).
 ICLR data can be obtained from [ICLR Database](https://cogcomp.github.io/iclr_database/).
 
 ### Semantic Scholar Citation Data
-We use Semantic Scholar to obtain citation data. These are obtained using the scripts under `./script`.
+We use Semantic Scholar to obtain citation data. To get the citation data, run `bash script/get_s2_citation_data.sh`. This will output:
+- A file `data/baby_iclr_citations.jsonl`, which is a version of the `baby_iclr` dataset, with citation information on each paper.
+- Files `results/citations_within_{time_window}_include_no_s2orc_{include_missed_papers}.tsv`: These files count the number of citations for each paper in `baby_iclr`, at `time_window` years after each paper was released. If `include_missed_papers` is `true`, it sets the citation count for papers not found in Semantic Scholar to 0; otherwise they're left out entirely.
+	- **NOTE** The `time_window` indicates the time elapsed after each individual paper was published, *not* the calendar year.
+
 
 ### (Optional) Processed Data
 We provide a few processed dataframes for making analyses easier, these are provided within `./data`. For instructions on generating these
@@ -56,7 +63,7 @@ and run them from the root directory for ease of module and data imports.
 
 
 1. Prepare ICLR Data ([`01_iclr_data.ipynb`](./notebooks/01_iclr_data.ipynb)): load data from the ICLR database, generate dataframes `baby_iclr` and `design_mat`
-for subsquent analysis. 
+for subsquent analysis.
 2. Statistical Matching ([`02_matching.ipynb`](./notebooks/02_matching.ipynb)): uses `design_mat` and performs statistical matching with fine-balance on topic clusters. Generates `fb_mathced_design_mat_ordered` for subsequent analysis.
 3. Obtain S2 citation data ([`03_s2_data_analysis.ipynb`](./notebooks/03_s2_data_analysis.ipynb)): uses `baby_iclr` and scripts under `./script/` to obtain S2 citation data. Generates `c_n` citation data for an `n`-day window.
 4. Primary and NOC Analysis ([`04_effect_analysis.ipynb`](./notebooks/04_effect_analysis.ipynb)): uses `design_mat` and `c_n` to perform primary and NOC anlaysis.

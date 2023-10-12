@@ -81,7 +81,7 @@ def get_citations(df, citations, window, include_missed=False):
 
 
 def main():
-    data_dir = Path("/net/nfs.cirrascale/allennlp/davidw/proj/end-of-anonymity/data")
+    data_dir = Path("data")
     # Submitted papers
     df = pd.read_csv(data_dir / "baby_iclr_ids_and_dates.csv")
 
@@ -91,6 +91,9 @@ def main():
     ]
 
     # Loop over settings.
+    result_dir = Path("results")
+    result_dir.mkdir(exist_ok=True)
+
     windows = [round(365 * years) for years in (0.5, 1, 2, 3, 5)]
     for window in windows:
         window_str = window
@@ -98,7 +101,7 @@ def main():
         for include_missed in [False, True]:
             print((window, include_missed))
             res = get_citations(df, citations, window, include_missed)
-            fname = f"results/citations_within_{window_str}_include_no_s2orc_{include_missed}.tsv".lower()
+            fname = result_dir / f"citations_within_{window_str}_include_no_s2orc_{include_missed}.tsv".lower()
             res.to_csv(fname, sep="\t", index=False)
 
 

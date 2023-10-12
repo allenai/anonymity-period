@@ -2,7 +2,7 @@
 
 <img align="right" src="img/graph.png" width=400px>
 
-This repository contains code and data for the paper [Estimating the Causal Effect of Early ArXiving on Paper Acceptance](https://arxiv.org/abs/2306.13891) by Yanai Elazar, Jiayao Zhang, David Wadden, Bo Zhang, Noah A. Smith.
+This repository contains code and data for the paper [Estimating the Causal Effect of Early ArXiving on Paper Acceptance](https://arxiv.org/abs/2306.13891) by Yanai Elazar*, Jiayao Zhang*, David Wadden*, Bo Zhang, Noah A. Smith.
 
 ## Setup
 
@@ -27,9 +27,10 @@ ICLR data can be obtained from [ICLR Database](https://cogcomp.github.io/iclr_da
 We use Semantic Scholar to obtain citation data. These are obtained using the scripts under `./script`.
 
 ### (Optional) Processed Data
-We provide a few processed dataframes for making analyses easier, these are provided within `./data`.
+We provide a few processed dataframes for making analyses easier, these are provided within `./data`. For instructions on generating these
+dataframe, see next section.
 
-- [`baby_iclr`](./data/baby_iclr.csv): this contains minimal columns we used from the ICLR database. This is used for the scripts under `./scripts`
+- [`baby_iclr`](./data/baby_iclr.csv): this contains minimal columns we used from the ICLR database. This is used for the scripts under `./script`
 to get the correpsonding S2 data for the ICLR submissions.
 - [`c_n`](./data/s2_citation/): these are S2 citation data, where the numeral `n` denotes an `n`-day window for counting citations.
 - [`specter_embedding`](./data/submission_cluster_20.csv): this contains 20 topic clusters obtained from running spectral clustering on the embedding from the Specter model.
@@ -42,17 +43,17 @@ to get the correpsonding S2 data for the ICLR submissions.
 This study is conducted in the notebook in the order below:
 
 
-1. Prepare ICLR Data (`01_iclr_data.ipynb`): load data from the ICLR database, generate dataframes `baby_iclr` and `design_mat`
+1. Prepare ICLR Data ([`01_iclr_data.ipynb`](./notebooks/01_iclr_data.ipynb)): load data from the ICLR database, generate dataframes `baby_iclr` and `design_mat`
 for subsquent analysis. 
-2. Statistical Matching (`02_matching.ipynb`): uses `design_mat` and performs statistical matching with fine-balance on topic clusters. Generates `fb_mathced_design_mat_ordered` for subsequent analysis.
-3. Obtain S2 citation data (`03_s2_data_analysis.ipynb`): uses `baby_iclr` and scripts under `./script/` to obtain S2 citation data. Generates `c_n` citation data for an `n`-day window.
-4. Primary and NOC Analysis (`04_effect_analysis.ipynb`): uses `design_mat` and `c_n` to perform primary and NOC anlaysis.
-5. Ploting results (`05_plots.ipynb`): plots the results in the primary and NOC analysis.
+2. Statistical Matching ([`02_matching.ipynb`](./notebooks/02_matching.ipynb)): uses `design_mat` and performs statistical matching with fine-balance on topic clusters. Generates `fb_mathced_design_mat_ordered` for subsequent analysis.
+3. Obtain S2 citation data ([`03_s2_data_analysis.ipynb`](./notebooks/03_s2_data_analysis.ipynb)): uses `baby_iclr` and scripts under `./script/` to obtain S2 citation data. Generates `c_n` citation data for an `n`-day window.
+4. Primary and NOC Analysis ([`04_effect_analysis.ipynb`](./notebooks/04_effect_analysis.ipynb)): uses `design_mat` and `c_n` to perform primary and NOC anlaysis.
+5. Ploting results ([`05_plots.ipynb`](./notebooks/05_plots.ipynb)): plots the results in the primary and NOC analysis.
 
 
 # Reference
 ```bib
-@inproceedings{arxiv23,
+@inproceedings{EZW+23,
 	Author = {Elazar*, Yanai and Zhang*, Jiayao and Wadden*, David and Zhang, Bo and Smith, Noah A.~},
 	booktitle = {Technical Report},
 	Title = {Estimating the Causal Effect of Early ArXiving on Paper Acceptance},
